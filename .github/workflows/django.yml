@@ -23,7 +23,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        python -m pip install --user pipenv
+        python -m pip install pipenv
         make dep
     - name: Run Tests
       run: |
