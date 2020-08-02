@@ -1,0 +1,35 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        make dep
+    - name: Run Tests
+      run: |
+        make test
+
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.12
+      with:
+        # Write upload file to path before uploading
+        #path_to_write_report: # optional
