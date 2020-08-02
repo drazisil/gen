@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pony Lookup</title>
+</head>
+<body>
+<h1>Pony lookup</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'api:pony_lookup' %}" method="post">
+{% csrf_token %}
+<input type="text" name="pony" id="pony" value="">
+    <label for="pony">Enter a pony id</label><br>
+<input type="submit" value="Lookup">
+</form>
+</body>
+</html>
