@@ -27,7 +27,7 @@ jobs:
         make dep
     - name: Run Tests
       run: |
-        make test
+        SECRET_KEY=IAMAVERYLONGANDTOTALLYNOTREALKEYUSEDFORTESTINGDONTTRYTOCOPYME make test
 
     - name: Codecov
       uses: codecov/codecov-action@v1.0.12
