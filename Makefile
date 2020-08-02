@@ -5,4 +5,13 @@ dep:
 	npm ci
 	pipenv install
 
-.PHONY: dep run
+test_dev:
+	pipenv run coverage run manage.py test --settings=gen.local_settings
+	pipenv run coverage xml
+
+
+test:
+	pipenv run coverage run manage.py test
+	pipenv run coverage xml
+
+.PHONY: dep run test test_dev
